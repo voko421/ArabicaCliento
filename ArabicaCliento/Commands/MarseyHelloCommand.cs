@@ -1,7 +1,7 @@
 using Content.Shared.Administration;
 using Robust.Shared.Console;
 
-namespace SimpleCommand.Commands;
+namespace ArabicaCliento.Commands;
 
 [AnyCommand] 
 public class CatHelloCommand : IConsoleCommand
