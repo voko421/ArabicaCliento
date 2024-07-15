@@ -12,6 +12,7 @@ public sealed partial class CheatMenuWindow : FancyWindow
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
+        MarseyLogger.Info("Cheat menu constructed");
     }
 
     protected override void Dispose(bool disposing)

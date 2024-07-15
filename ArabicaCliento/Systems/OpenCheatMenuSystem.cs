@@ -1,3 +1,4 @@
+using ArabicaCliento.Input;
 using ArabicaCliento.UI;
 using Content.Shared.Input;
 using Content.Shared.Movement.Systems;
@@ -12,41 +13,31 @@ using Robust.Shared.Player;
 
 namespace ArabicaCliento.Systems;
 
+
 public class OpenCheatMenuSystem : EntitySystem
 {
     [Dependency] private readonly IUserInterfaceManager _ui = default!;
-    [Dependency] private readonly IInputManager _inputManager = default!;
-    
-    private sealed class OpenCheatMenuInputHandler(OpenCheatMenuSystem cheatMenuSystem) : InputCmdHandler
+    private CheatMenuWindow _window = null!;
+
+    public void ToggleMenu()
     {
-        public override bool HandleCmdMessage(IEntityManager entManager, ICommonSession? session, IFullInputCmdMessage message)
-        {
-            if (session?.AttachedEntity == null) return false;
-            
-            cheatMenuSystem.Open();
-            return false;
-        }
+        if (!_window.IsOpen)
+            _window.OpenCentered();
+        else
+            _window.Close();
     }
-    
-    private void Open()
-    {
-        _ui.GetFirstWindow<CheatMenuWindow>().OpenCentered();
-    }
+
 
     public override void Initialize()
     {
-        base.Initialize();
-        var registration = new KeyBindingRegistration
-        {
-            Function = "СheatMenu",
-            BaseKey = Keyboard.Key.F4,
-            Type = KeyBindingType.Toggle
-        };
-
-        _inputManager.RegisterBinding(registration);
-        CommandBinds.Builder
-            .Bind("СheatMenu", new OpenCheatMenuInputHandler(this))
-            .Register<OpenCheatMenuSystem>();
+        _window = _ui.CreateWindow<CheatMenuWindow>();
         MarseyLogger.Info("CheatMenu init done.");
+    }
+
+    public override void Shutdown()
+    {
+        base.Shutdown();
+        _window.Close();
+        _window.Dispose();
     }
 }
