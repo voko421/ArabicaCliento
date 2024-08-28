@@ -2,10 +2,7 @@ using Content.Shared.MouseRotator;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Player;
-using Robust.Shared.GameObjects;
-using Robust.Shared.IoC;
 using Robust.Shared.Map;
-using Robust.Shared.Maths;
 using Robust.Shared.Timing;
 
 namespace ArabicaCliento.Systems;
@@ -68,9 +65,9 @@ public class ArabicaSpinSystem : EntitySystem
             if (angleDir == curRot.GetCardinalDir())
                 return;
 
-            RaisePredictiveEvent(new RequestMouseRotatorRotationSimpleEvent()
+            RaisePredictiveEvent(new RequestMouseRotatorRotationEvent()
             {
-                Direction = angleDir,
+                Rotation = angle,
             });
 
             return;

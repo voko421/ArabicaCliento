@@ -2,14 +2,14 @@ using ArabicaCliento.Systems;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
 
-namespace ArabicaCliento.Commands.Spin;
+namespace ArabicaCliento.Commands;
 
 [AnyCommand]
-public class ArabicaSpinSetEnabled : IConsoleCommand
+public class AntislipSetEnabled: IConsoleCommand
 {
-    public string Command => "arabica.spin.set_enabled";
-    public string Description => "Enabling a autospin";
-    public string Help => "arabica.spin.set_enabled <bool>";
+    public string Command => "arabica.anti_slip.set_enabled";
+    public string Description => "Enable or disable antislip";
+    public string Help => "arabica.anti_slip.set_enabled <bool>";
     
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
@@ -25,8 +25,7 @@ public class ArabicaSpinSetEnabled : IConsoleCommand
             return;
         }
 
-        var sys = IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<ArabicaSpinSystem>();
-
-        sys.Enabled = enabled;
+        var sys = IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<ArabicaAntiSlipSystem>();
+        sys.SetEnabled(enabled);
     }
 }

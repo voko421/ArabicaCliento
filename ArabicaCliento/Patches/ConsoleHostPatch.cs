@@ -1,12 +1,10 @@
 using System.Reflection;
-using Content.Client.Administration.Managers;
 using HarmonyLib;
-using Robust.Client.Console;
 
 namespace ArabicaCliento.Patches;
 
 [HarmonyPatch]
-static class ConsoleHostPatch
+internal class ConsoleHostPatch
 {
     [HarmonyTargetMethod]
     private static MethodBase TargetMethod()

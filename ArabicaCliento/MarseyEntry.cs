@@ -1,10 +1,12 @@
 using System.Reflection;
+using HarmonyLib;
 
 // ReSharper disable once CheckNamespace
 public static class MarseyEntry
 {
     public static void Entry()
     {
+        Harmony.DEBUG = true;
         MarseyLogger.Info("Entry for patching started.");
         if (!TryGetAssembly("Content.Client"))
             return;

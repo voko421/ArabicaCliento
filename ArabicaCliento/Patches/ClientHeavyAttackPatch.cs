@@ -1,17 +1,15 @@
 using Content.Shared.Weapons.Melee;
 using HarmonyLib;
-using Robust.Shared.GameObjects;
-using Robust.Shared.IoC;
 using Robust.Shared.Map;
-using System.Reflection;
 using ArabicaCliento.Systems;
 using Content.Client.Weapons.Melee;
 
 namespace ArabicaCliento.Patches;
 
 [HarmonyPatch(typeof(MeleeWeaponSystem), "ClientHeavyAttack")]
-class ClientHeavyAttackPatch
+public class ClientHeavyAttackPatch
 {
+    public static bool Enabled = true;
     [HarmonyPrefix]
     private static void Prefix(ref EntityUid user,
         ref EntityCoordinates coordinates,
@@ -20,11 +18,11 @@ class ClientHeavyAttackPatch
     {
         var entity = IoCManager.Resolve<EntityManager>();
         var xform = entity.System<SharedTransformSystem>();
-        var aim = entity.System<AimSystem>();
+        var aim = entity.System<ArabicaAimSystem>();
 
-        var mapCoords = aim.GetClosetAliveMob(user);
-        if (mapCoords == null) return;
+        var output = aim.GetClosestToEntInRange(user, component.Range, [user]);
+        if (output == null || !Enabled) return;
 
-        coordinates = EntityCoordinates.FromMap(coordinates.EntityId, mapCoords.Value, xform, entity);
+        coordinates = EntityCoordinates.FromMap(coordinates.EntityId, output.Value.Position, xform, entity);
     }
 }

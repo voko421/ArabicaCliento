@@ -1,6 +1,5 @@
 using Content.Client.Administration.Managers;
 using HarmonyLib;
-using Robust.Client.Console;
 
 namespace ArabicaCliento.Patches;
 
@@ -10,7 +9,7 @@ namespace ArabicaCliento.Patches;
 [HarmonyPatch(nameof(ClientAdminManager.CanScript))]
 [HarmonyPatch(nameof(ClientAdminManager.CanCommand))]
 [HarmonyPatch(nameof(ClientAdminManager.IsActive))]
-static class ClientAdminManagerPatch
+internal static class ClientAdminManagerPatch
 {
     [HarmonyPostfix]
     private static void Postfix(ref bool __result) => __result = true;

@@ -9,7 +9,7 @@ namespace ArabicaCliento.Patches;
 [HarmonyPatch(nameof(ClientConGroupController.CanAdminMenu))]
 [HarmonyPatch(nameof(ClientConGroupController.CanAdminPlace))]
 [HarmonyPatch(nameof(ClientConGroupController.CanViewVar))]
-static class ClientConGroupControllerPatch
+internal static class ClientConGroupControllerPatch
 {
     [HarmonyPostfix]
     private static void Postfix(ref bool __result) => __result = true;

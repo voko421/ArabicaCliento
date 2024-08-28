@@ -3,5 +3,9 @@
                       Title="Arabica Click GUI"
                       MinSize="625 400"
                       SetSize="700 550">
-    <Label Text="Test label" />
+    <BoxContainer Orientation="Vertical">
+        <Button ToggleMode="True" Text="Ranged aimbot" Name="Ranged"></Button>
+        <Button ToggleMode="True" Text="Melee aimbot" Name="Melee"></Button>
+        <Button ToggleMode="True" Text="Autospin" Name="Autospin"></Button>
+    </BoxContainer>
 </controls:FancyWindow>

@@ -1,21 +1,15 @@
 using ArabicaCliento.Input;
 using ArabicaCliento.UI;
-using Content.Shared.Input;
-using Content.Shared.Movement.Systems;
 using Robust.Client.Input;
 using Robust.Client.UserInterface;
-using Robust.Shared.GameObjects;
-using Robust.Shared.Input;
 using Robust.Shared.Input.Binding;
-using Robust.Shared.IoC;
-using Robust.Shared.Maths;
-using Robust.Shared.Player;
 
 namespace ArabicaCliento.Systems;
 
 
-public class OpenCheatMenuSystem : EntitySystem
+public class ArabicaCheatMenuSystem : EntitySystem
 {
+    [Dependency] private readonly IInputManager _input = default!;
     [Dependency] private readonly IUserInterfaceManager _ui = default!;
     private CheatMenuWindow _window = null!;
 
@@ -26,17 +20,17 @@ public class OpenCheatMenuSystem : EntitySystem
         else
             _window.Close();
     }
-
-
+    
     public override void Initialize()
     {
         _window = _ui.CreateWindow<CheatMenuWindow>();
         MarseyLogger.Info("CheatMenu init done.");
+        var handler = InputCmdHandler.FromDelegate(enabled: _ => ToggleMenu(), handle: false);
+        _input.SetInputCommand(ArabicaKeyFunctions.ToggleCheatMenu, handler);
     }
 
     public override void Shutdown()
     {
-        base.Shutdown();
         _window.Close();
         _window.Dispose();
     }

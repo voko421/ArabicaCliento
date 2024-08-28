@@ -1,4 +1,3 @@
-using Content.Shared.Input;
 using Robust.Shared.Input;
 
 namespace ArabicaCliento.Input;

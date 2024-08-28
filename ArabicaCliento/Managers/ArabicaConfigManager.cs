@@ -1,5 +1,3 @@
-using Robust.Shared.IoC;
-
 namespace ArabicaCliento.Managers;
 
 public class ArabicaConfigManager : IPostInjectInit

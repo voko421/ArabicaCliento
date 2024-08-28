@@ -1,19 +1,22 @@
+using Content.Client.Administration.Systems;
 using Content.Shared.Administration;
-using Robust.Client.Player;
 using Robust.Shared.Console;
-using Robust.Shared.IoC;
-using Robust.Shared.Network.Messages;
 
 namespace ArabicaCliento.Commands;
 
 [AnyCommand]
-public class ArabicaPlayerList: IConsoleCommand
+public class ArabicaPlayerList : IConsoleCommand
 {
-    public string Command => "arabica.toggle_menu";
-    public string Description => "This command toggle the cheat menu";
-    public string Help => "Toggle the cheat menu";
-    
+    public string Command => "arabica.player_list";
+    public string Description => "Output a playerlist";
+    public string Help => "arabica.player_list";
+
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
+        var sys = IoCManager.Resolve<IEntityManager>().System<AdminSystem>();
+        foreach (var player in sys.PlayerList)
+        {
+            shell.WriteLine(player.Username);
+        }
     }
 }
