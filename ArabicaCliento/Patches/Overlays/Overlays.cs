@@ -5,7 +5,7 @@ using Content.Client.Flash;
 using Content.Client.UserInterface.Systems.DamageOverlays.Overlays;
 using HarmonyLib;
 
-namespace ArabicaCliento.Patches;
+namespace ArabicaCliento.Patches.Overlays;
 
 [HarmonyPatch]
 public class FlashOverlayPatch : OverlayPatch<FlashOverlay>;

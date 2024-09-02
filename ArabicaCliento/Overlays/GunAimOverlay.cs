@@ -51,6 +51,6 @@ public class GunAimOverlay(
         if (mapPos.MapId != mousePos.MapId)
             return;
 
-        worldHandle.DrawCircle(mousePos.Position, 2.5f, Color.White, false);
+        worldHandle.DrawCircle(mousePos.Position, ArabicaConfig.RangedAimbotRadius, Color.White, false);
     }
 }

@@ -19,8 +19,6 @@ public sealed class ArabicaAntiSlipSystem : EntitySystem
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IEyeManager _eyeManager = default!;
-
-    private bool _enabled;
     
     private bool _changed;
 
@@ -28,16 +26,16 @@ public sealed class ArabicaAntiSlipSystem : EntitySystem
 
     public void SetEnabled(bool enabled)
     {
-        if (_enabled && !enabled && _forcePressWalk) 
+        if (ArabicaConfig.AntiSlipEnabled && !enabled && _forcePressWalk) 
             PressWalk(BoundKeyState.Down);
-        _enabled = enabled;
+        ArabicaConfig.AntiSlipEnabled = enabled;
     }
 
     public override void Update(float frameTime)
     {
         var player = _playerManager.LocalEntity;
 
-        if (!player.HasValue || !_enabled)
+        if (!player.HasValue || !ArabicaConfig.AntiSlipEnabled)
             return;
         var onSoap = IsPlayerOnSoap(player.Value);
         _changed = onSoap != _forcePressWalk;
@@ -52,7 +50,7 @@ public sealed class ArabicaAntiSlipSystem : EntitySystem
 
     private void PressWalk(BoundKeyState state)
     {
-        if (!_playerManager.LocalEntity.HasValue || !_enabled)
+        if (!_playerManager.LocalEntity.HasValue || !ArabicaConfig.AntiSlipEnabled)
             return;
 
         var player = _playerManager.LocalEntity.Value;

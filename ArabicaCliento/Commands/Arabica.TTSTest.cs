@@ -1,9 +1,11 @@
+using Content.Shared.Administration;
 using Content.Shared.Corvax.TTS;
 using Robust.Shared.Console;
 using Robust.Shared.Prototypes;
 
 namespace ArabicaCliento.Commands;
 
+[AnyCommand]
 public class TTSTestCommand : IConsoleCommand
 {
     public string Command => "arabica.tts.test_tts";

@@ -25,8 +25,6 @@ public class ArabicaSpinSetEnabled : IConsoleCommand
             return;
         }
 
-        var sys = IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<ArabicaSpinSystem>();
-
-        sys.Enabled = enabled;
+        ArabicaConfig.SpinBotEnabled = enabled;
     }
 }

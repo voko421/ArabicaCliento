@@ -1,4 +1,5 @@
 using ArabicaCliento.Components;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Verbs;
 
 namespace ArabicaCliento.Systems;
@@ -12,6 +13,8 @@ public class ArabicaFriendSystem: EntitySystem
 
     private void AddFriendVerb(GetVerbsEvent<Verb> ev)
     {
+        if (!HasComp<MobStateComponent>(ev.Target))
+            return;
         Verb verb;
         if (HasComp<ArabicaFriendComponent>(ev.Target))
             verb = new Verb

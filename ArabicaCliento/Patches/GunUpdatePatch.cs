@@ -12,11 +12,10 @@ namespace ArabicaCliento.Patches;
 [HarmonyPatch(typeof(GunSystem), nameof(GunSystem.Update))]
 public class GunUpdatePatch
 {
-    public static bool Enabled = true;
     NetCoordinates Patch(EntityCoordinates realCoordinates, MetaDataComponent metadata)
     {
         var entity = IoCManager.Resolve<EntityManager>();
-        if (!Enabled)
+        if (!ArabicaConfig.RangedAimbotEnabled)
             return entity.GetNetCoordinates(realCoordinates);
         var inputManager = IoCManager.Resolve<IInputManager>();
         var playerMan = IoCManager.Resolve<IPlayerManager>();
@@ -25,11 +24,8 @@ public class GunUpdatePatch
         HashSet<EntityUid>? exclude = null;
         if (playerMan.LocalEntity != null)
             exclude = [playerMan.LocalEntity.Value];
-        
-        
-
         var aimOutput =
-            aimSystem.GetClosestInRange(inputManager.MouseScreenPosition, 2f, exclude);
+            aimSystem.GetClosestInRange(inputManager.MouseScreenPosition, ArabicaConfig.RangedAimbotRadius, exclude);
         if (aimOutput == null)
         {
             return entity.GetNetCoordinates(realCoordinates);

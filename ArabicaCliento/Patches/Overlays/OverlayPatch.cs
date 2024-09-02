@@ -1,9 +1,11 @@
 using System.Reflection;
 using HarmonyLib;
+using JetBrains.Annotations;
 using Robust.Client.Graphics;
 
-namespace ArabicaCliento.Patches;
+namespace ArabicaCliento.Patches.Overlays;
 
+[UsedImplicitly(ImplicitUseTargetFlags.WithInheritors)]
 public abstract class OverlayPatch<T> where T: Overlay
 {
     [HarmonyTargetMethod]

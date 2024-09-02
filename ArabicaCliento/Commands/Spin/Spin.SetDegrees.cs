@@ -25,8 +25,6 @@ public class ArabicaSpinSetDegrees : IConsoleCommand
             return;
         }
 
-        var sys = IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<ArabicaSpinSystem>();
-
-        sys.PerSecondSpinDegrees = degrees;
+        ArabicaConfig.SpinBotDegreesPerSecond = degrees;
     }
 }

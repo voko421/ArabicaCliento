@@ -9,7 +9,6 @@ namespace ArabicaCliento.Patches;
 [HarmonyPatch(typeof(MeleeWeaponSystem), "ClientHeavyAttack")]
 public class ClientHeavyAttackPatch
 {
-    public static bool Enabled = true;
     [HarmonyPrefix]
     private static void Prefix(ref EntityUid user,
         ref EntityCoordinates coordinates,
@@ -21,7 +20,7 @@ public class ClientHeavyAttackPatch
         var aim = entity.System<ArabicaAimSystem>();
 
         var output = aim.GetClosestToEntInRange(user, component.Range, [user]);
-        if (output == null || !Enabled) return;
+        if (output == null || !ArabicaConfig.MeleeAimbotEnabled) return;
 
         coordinates = EntityCoordinates.FromMap(coordinates.EntityId, output.Value.Position, xform, entity);
     }

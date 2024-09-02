@@ -9,18 +9,17 @@ namespace ArabicaCliento.UI;
 [GenerateTypedNameReferences]
 public sealed partial class CheatMenuWindow : FancyWindow
 {
-    [Dependency] private readonly EntityManager _entMan = default!;
-
-    private readonly ArabicaSpinSystem? _spin; 
     public CheatMenuWindow()
     {
         RobustXamlLoader.Load(this);
-        IoCManager.InjectDependencies(this);
-        _spin ??= _entMan.System<ArabicaSpinSystem>();
-        Ranged.Pressed = GunUpdatePatch.Enabled;
-        Melee.Pressed = ClientHeavyAttackPatch.Enabled;
-        Autospin.Pressed = _spin.Enabled;
-        Ranged.OnToggled += args => { GunUpdatePatch.Enabled = args.Pressed; };
-        Autospin.OnToggled += args => { if (_spin != null) _spin.Enabled = args.Pressed; };
+        Ranged.Pressed = ArabicaConfig.RangedAimbotEnabled;
+        Melee.Pressed = ArabicaConfig.MeleeAimbotEnabled;
+        Autospin.Pressed = ArabicaConfig.SpinBotEnabled;
+        Antislip.Pressed = ArabicaConfig.AntiSlipEnabled;
+        Melee.OnToggled += args => ArabicaConfig.MeleeAimbotEnabled = args.Pressed;
+        Ranged.OnToggled += args => ArabicaConfig.RangedAimbotEnabled = args.Pressed;
+        Autospin.OnToggled += args => ArabicaConfig.SpinBotEnabled = args.Pressed;
+        Antislip.OnToggled += args => ArabicaConfig.AntiSlipEnabled = args.Pressed;
+        
     }
 }

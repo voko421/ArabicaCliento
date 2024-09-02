@@ -15,16 +15,14 @@ public class ArabicaSpinSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IEyeManager _eye = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    public bool Enabled = false;
     private float _lastDegrees;
-    public float PerSecondSpinDegrees = 1440f;
 
     public override void Update(float frameTime)
     {
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        if (!Enabled)
+        if (!ArabicaConfig.SpinBotEnabled)
             if (!_input.MouseScreenPosition.IsValid)
                 return;
 
@@ -36,9 +34,9 @@ public class ArabicaSpinSystem : EntitySystem
         Angle angle;
         Angle curRot;
 
-        if (Enabled)
+        if (ArabicaConfig.SpinBotEnabled)
         {
-            _lastDegrees += PerSecondSpinDegrees * frameTime;
+            _lastDegrees += ArabicaConfig.SpinBotDegreesPerSecond * frameTime;
             angle = Angle.FromDegrees(_lastDegrees);
             curRot = _transform.GetWorldRotation(Transform(player.Value));
             if (_lastDegrees > 360f)

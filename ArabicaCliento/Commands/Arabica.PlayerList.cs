@@ -1,5 +1,6 @@
 using Content.Client.Administration.Systems;
 using Content.Shared.Administration;
+using Robust.Client.Player;
 using Robust.Shared.Console;
 
 namespace ArabicaCliento.Commands;
@@ -13,10 +14,10 @@ public class ArabicaPlayerList : IConsoleCommand
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
-        var sys = IoCManager.Resolve<IEntityManager>().System<AdminSystem>();
-        foreach (var player in sys.PlayerList)
+        var man = IoCManager.Resolve<IPlayerManager>();
+        foreach (var ses in man.Sessions)
         {
-            shell.WriteLine(player.Username);
+            shell.WriteLine(ses.Name);
         }
     }
 }
