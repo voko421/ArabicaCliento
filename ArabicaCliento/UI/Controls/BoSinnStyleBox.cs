@@ -23,6 +23,6 @@ public class BoSinnStyleBox: StyleBoxTexture
     public BoSinnStyleBox()
     {
         Texture = GetTexture();
-        Modulate = new Color(255, 255, 255, 0);
+        Modulate = new Color(255, 255, 255, 230);
     }
 }
