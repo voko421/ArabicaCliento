@@ -23,8 +23,10 @@ public sealed class ArabicaPlayerListUpdaterSystem: EntitySystem
 
     public override void Update(float frameTime)
     {
-        if (_timing.CurTime < _nextUpdate)
-            _net.ClientSendMessage(new MsgPlayerListReq());
+        if (_timing.CurTime > _nextUpdate)
+            return;
+        _net.ClientSendMessage(new MsgPlayerListReq());
+        _nextUpdate = _timing.CurTime + UpdateTime;
     }
 
     public override void Shutdown()
