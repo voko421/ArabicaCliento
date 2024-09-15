@@ -23,6 +23,7 @@ public class ForceZoomCommand : IConsoleCommand
         if (!float.TryParse(args[0], out var zoom))
         {
             shell.WriteError($"Unable to parse {args[0]} as float");
+            return;
         }
 
         var sys = IoCManager.Resolve<IEntityManager>().System<ArabicaAutoZoomSystem>();
