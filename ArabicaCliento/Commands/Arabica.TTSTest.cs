@@ -1,4 +1,5 @@
-using Content.Shared.Administration;
+// TODO: Rework this shit with reflection
+/*using Content.Shared.Administration;
 using Content.Shared.Corvax.TTS;
 using Robust.Shared.Console;
 using Robust.Shared.Prototypes;
@@ -33,3 +34,4 @@ public class TTSTestCommand : IConsoleCommand
             });
     }
 }
+*/

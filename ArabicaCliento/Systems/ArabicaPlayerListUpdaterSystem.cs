@@ -6,7 +6,7 @@ using Robust.Shared.Timing;
 
 namespace ArabicaCliento.Systems;
 
-public sealed class ArabicaPlayerListUpdaterSystem: EntitySystem
+/*public sealed class ArabicaPlayerListUpdaterSystem: EntitySystem
 {
     private static readonly TimeSpan UpdateTime = TimeSpan.FromSeconds(4);
     [Dependency] private readonly IGameTiming _timing = default!;
@@ -40,3 +40,4 @@ public sealed class ArabicaPlayerListUpdaterSystem: EntitySystem
         
     }
 }
+*/
