@@ -3,4 +3,4 @@ using Content.Shared.Overlays;
 
 namespace ArabicaCliento.Systems;
 
-public class ArabicaJobIconsSystem : LocalPlayerAddCompSystem<ShowSecurityIconsComponent>;
+public class ArabicaJobIconsSystem : LocalPlayerAddCompSystem<ShowJobIconsComponent>;
