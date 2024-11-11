@@ -1,19 +1,35 @@
-name: Manual workflow
+name: Release ArabicaCliento
+
 on:
+  push:
+    tags:
+      - 'v*' # v0.1 and next...
   workflow_dispatch:
     
 jobs:
   release:
+    
     runs-on: ubuntu-latest
     steps:
-      - name: Create Draft Release
+      - name: Download sources
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        
+      - name: Make Arabica Coffee
+        run: dotnet build
+        
+      - name: Pour coffee
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: <tofill>
-          release_name: <tofill>
+          tag_name: ${{ github.ref_name }} # Tag
+          release_name: Version ${{ github.ref_name }}
           draft: true
           prerelease: false
 
@@ -22,11 +38,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./my-artifact.zip
-          asset_name: my-artifact.zip
-          asset_content_type: application/zip
+          asset_path: ./ArabicaCliento/bin/Debug/net8.0/ArabicaCliento.dll
+          asset_name: ArabicaCliento.dll
+          asset_content_type: application/vnd.microsoft.portable-executable
 
-      - uses: eregon/publish-release@v1
+      - name: Bring coffee to release
+        uses: eregon/publish-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
