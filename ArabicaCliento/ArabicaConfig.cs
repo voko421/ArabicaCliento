@@ -13,4 +13,6 @@ public static class ArabicaConfig
     public static bool RangedAimbotEnabled = true;
     
     public static float RangedAimbotRadius = 2f;
+
+    public static bool SyndicateDetector= true;
 }

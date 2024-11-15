@@ -1,18 +1,13 @@
-<controls:FancyWindow xmlns="https://spacestation14.io"
-                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls;assembly=Content.Client"
-                      xmlns:arabica="clr-namespace:ArabicaCliento.UI.Controls"
-                      Title="Arabica Click GUI"
-                      MinSize="625 400"
-                      SetSize="700 550">
-    <PanelContainer>
-        <PanelContainer.PanelOverride>
-            <arabica:BoSinnStyleBox/>
-        </PanelContainer.PanelOverride>
-    </PanelContainer>
-    <BoxContainer Orientation="Vertical">
-            <Button ToggleMode="True" Text="Ranged aimbot" Name="Ranged"/>
-            <Button ToggleMode="True" Text="Melee aimbot" Name="Melee"/>
-            <Button ToggleMode="True" Text="Autospin" Name="Autospin"/>
-            <Button ToggleMode="True" Text="AntiSlip" Name="Antislip"/>
+<arabica:ArabicaWindow xmlns="https://spacestation14.io"
+                       xmlns:arabica="clr-namespace:ArabicaCliento.UI.Controls"
+                       MinSize="600 400"
+                       SetSize="600 400">
+    <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" VerticalExpand="True" VerticalAlignment="Center"
+                  SeparationOverride="5">
+        <Button ToggleMode="True" Text="Ranged aimbot" StyleClasses="ButtonSquare" Name="Ranged" />
+        <Button ToggleMode="True" Text="Melee aimbot" StyleClasses="ButtonSquare" Name="Melee" />
+        <Button ToggleMode="True" Text="Autospin" StyleClasses="ButtonSquare" Name="Autospin" />
+        <Button ToggleMode="True" Text="AntiSlip" StyleClasses="ButtonSquare" Name="Antislip" />
+        <Button ToggleMode="True" Text="Syndicate detector" StyleClasses="ButtonSquare" Name="SyndicateDetector" />
     </BoxContainer>
-</controls:FancyWindow>
+</arabica:ArabicaWindow>

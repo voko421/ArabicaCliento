@@ -6,5 +6,5 @@ namespace ArabicaCliento.Systems;
 public class ArabicaHealthBarSystem : LocalPlayerAddCompSystem<ShowHealthBarsComponent>
 {
     protected override ShowHealthBarsComponent CompOverride =>
-        new ShowHealthBarsComponent { DamageContainers = ["Biological"] };
+        new ShowHealthBarsComponent { DamageContainers = ["Biological", "Silicon"] };
 }

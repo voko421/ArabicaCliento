@@ -3,6 +3,7 @@ using ArabicaCliento.Systems;
 using Content.Client.Weapons.Ranged.Systems;
 using Content.Shared.Weapons.Ranged.Events;
 using HarmonyLib;
+using Robust.Client.GameObjects;
 using Robust.Client.Input;
 using Robust.Client.Player;
 using Robust.Shared.Map;
@@ -12,27 +13,33 @@ namespace ArabicaCliento.Patches;
 [HarmonyPatch(typeof(GunSystem), nameof(GunSystem.Update))]
 public class GunUpdatePatch
 {
+    private EntityManager? _entMan;
+    private IInputManager? _input;
+    private IPlayerManager? _player;
+    private TransformSystem? _transform;
+    private ArabicaAimSystem? _aim;
     NetCoordinates Patch(EntityCoordinates realCoordinates, MetaDataComponent metadata)
     {
-        var entity = IoCManager.Resolve<EntityManager>();
+        _entMan ??= IoCManager.Resolve<EntityManager>();
         if (!ArabicaConfig.RangedAimbotEnabled)
-            return entity.GetNetCoordinates(realCoordinates);
-        var inputManager = IoCManager.Resolve<IInputManager>();
-        var playerMan = IoCManager.Resolve<IPlayerManager>();
-        var transform = entity.System<SharedTransformSystem>();
-        var aimSystem = entity.System<ArabicaAimSystem>();
+            return _entMan.GetNetCoordinates(realCoordinates);
+        _input ??= IoCManager.Resolve<IInputManager>();
+        _player ??= IoCManager.Resolve<IPlayerManager>();
+        _transform ??= _entMan.System<TransformSystem>();
+        _aim ??= _entMan.System<ArabicaAimSystem>();
         HashSet<EntityUid>? exclude = null;
-        if (playerMan.LocalEntity != null)
-            exclude = [playerMan.LocalEntity.Value];
+        if (_player.LocalEntity != null)
+            exclude = [_player.LocalEntity.Value];
         var aimOutput =
-            aimSystem.GetClosestInRange(inputManager.MouseScreenPosition, ArabicaConfig.RangedAimbotRadius, exclude);
+            _aim.GetClosestInRange(_input.MouseScreenPosition, ArabicaConfig.RangedAimbotRadius, exclude);
         if (aimOutput == null)
         {
-            return entity.GetNetCoordinates(realCoordinates);
+            return _entMan.GetNetCoordinates(realCoordinates);
         }
 
-        var closest = EntityCoordinates.FromMap(realCoordinates.EntityId, aimOutput.Value.Position, transform, entity);
-        return entity.GetNetCoordinates(closest);
+        var closest = _transform.ToCoordinates(realCoordinates.EntityId, aimOutput.Value.Position);
+
+        return _entMan.GetNetCoordinates(closest);
     }
 
     [HarmonyTranspiler]

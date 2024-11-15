@@ -1,7 +1,9 @@
+using JetBrains.Annotations;
 using Robust.Shared.Player;
 
 namespace ArabicaCliento.Systems.Abstract;
 
+[UsedImplicitly(ImplicitUseTargetFlags.WithInheritors)]
 public abstract class LocalPlayerSystem: EntitySystem
 {
     public override void Initialize()
