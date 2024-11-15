@@ -13,12 +13,13 @@ namespace ArabicaCliento.Patches;
 [HarmonyPatch(typeof(GunSystem), nameof(GunSystem.Update))]
 public class GunUpdatePatch
 {
-    private EntityManager? _entMan;
-    private IInputManager? _input;
-    private IPlayerManager? _player;
-    private TransformSystem? _transform;
-    private ArabicaAimSystem? _aim;
-    NetCoordinates Patch(EntityCoordinates realCoordinates, MetaDataComponent metadata)
+    private static EntityManager? _entMan;
+    private static IInputManager? _input;
+    private static IPlayerManager? _player;
+    private static TransformSystem? _transform;
+    private static ArabicaAimSystem? _aim;
+
+    NetCoordinates Patch(EntityCoordinates realCoordinates, MetaDataComponent _)
     {
         _entMan ??= IoCManager.Resolve<EntityManager>();
         if (!ArabicaConfig.RangedAimbotEnabled)
