@@ -18,7 +18,7 @@ public class ClientHeavyAttackPatch
     [HarmonyPrefix]
     private static void Prefix(ref EntityUid user,
         ref EntityCoordinates coordinates,
-        ref EntityUid _,
+        ref EntityUid meleeUid,
         ref MeleeWeaponComponent component)
     {
         if (!ArabicaConfig.MeleeAimbotEnabled) return;
