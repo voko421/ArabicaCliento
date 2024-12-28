@@ -16,5 +16,7 @@ public static class ArabicaConfig
 
     public static bool SyndicateDetector = true;
 
+    public static HashSet<string> FriendsSet = [];
+
     //public static bool LogPlayers = true;
 }

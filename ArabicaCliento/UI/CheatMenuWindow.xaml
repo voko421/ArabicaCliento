@@ -10,5 +10,6 @@
         <Button ToggleMode="True" Text="AntiSlip" StyleClasses="ButtonSquare" Name="Antislip" />
         <Button ToggleMode="True" Text="Syndicate detector" StyleClasses="ButtonSquare" Name="SyndicateDetector" />
         <!-- <Button ToggleMode="True" Text="Log players" StyleClasses="ButtonSquare" Name="LogPlayers" /> -->
+        <Button Text="OPEN DISCORD" StyleClasses="ButtonColorRed" Name="Discord" />
     </BoxContainer>
 </arabica:ArabicaWindow>
