@@ -1,8 +1,5 @@
-using ArabicaCliento.Input;
-using Content.Shared.Input;
 using Robust.Client.Input;
 using Robust.Shared.ContentPack;
-using Robust.Shared.Network.Messages;
 
 namespace ArabicaCliento;
 
@@ -24,6 +21,5 @@ public sealed class EntryPoint : GameShared
         };
         _inputManager.RegisterBinding(registration, false);
         MarseyLogger.Debug("Setup context.");
-        //ArabicaContexts.SetupContexts(_inputManager.Contexts);
     }
 }

@@ -9,5 +9,6 @@
         <Button ToggleMode="True" Text="Autospin" StyleClasses="ButtonSquare" Name="Autospin" />
         <Button ToggleMode="True" Text="AntiSlip" StyleClasses="ButtonSquare" Name="Antislip" />
         <Button ToggleMode="True" Text="Syndicate detector" StyleClasses="ButtonSquare" Name="SyndicateDetector" />
+        <!-- <Button ToggleMode="True" Text="Log players" StyleClasses="ButtonSquare" Name="LogPlayers" /> -->
     </BoxContainer>
 </arabica:ArabicaWindow>

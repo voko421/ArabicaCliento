@@ -17,12 +17,14 @@ public sealed partial class CheatMenuWindow : ArabicaWindow
         Melee.Pressed = ArabicaConfig.MeleeAimbotEnabled;
         Autospin.Pressed = ArabicaConfig.SpinBotEnabled;
         Antislip.Pressed = ArabicaConfig.AntiSlipEnabled;
+        //LogPlayers.Pressed = ArabicaConfig.LogPlayers;
+        
         SyndicateDetector.Pressed = ArabicaConfig.SyndicateDetector;
         Melee.OnToggled += args => ArabicaConfig.MeleeAimbotEnabled = args.Pressed;
         Ranged.OnToggled += args => ArabicaConfig.RangedAimbotEnabled = args.Pressed;
         Autospin.OnToggled += args => ArabicaConfig.SpinBotEnabled = args.Pressed;
         Antislip.OnToggled += args => ArabicaConfig.AntiSlipEnabled = args.Pressed;
         SyndicateDetector.OnToggled += args => ArabicaConfig.SyndicateDetector = args.Pressed;
-        
+        //LogPlayers.OnToggled += args => ArabicaConfig.LogPlayers = args.Pressed;
     }
 }
