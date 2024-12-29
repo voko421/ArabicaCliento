@@ -1,11 +1,15 @@
 using ArabicaCliento.Components;
+using Content.Client.Administration.Systems;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Verbs;
+using Robust.Shared.Player;
 
 namespace ArabicaCliento.Systems;
 
-public class ArabicaFriendSystem: EntitySystem
+public class ArabicaFriendSystem : EntitySystem
 {
+    [Dependency] private readonly AdminSystem _adminSystem = default!;
+
     public override void Initialize()
     {
         SubscribeLocalEvent<GetVerbsEvent<Verb>>(AddFriendVerb);
@@ -27,9 +31,25 @@ public class ArabicaFriendSystem: EntitySystem
             verb = new Verb
             {
                 Text = "Friend",
-                Act = () => AddComp(ev.Target, new ArabicaFriendComponent {NetSyncEnabled = false}),
+                Act = () => AddComp(ev.Target, new ArabicaFriendComponent { NetSyncEnabled = false }),
                 ClientExclusive = true
             };
         ev.Verbs.Add(verb);
+    }
+
+    public bool IsFriend(Entity<ActorComponent?> ent)
+    {
+        if (HasComp<ArabicaFriendComponent>(ent))
+            return true;
+        Resolve(ent, ref ent.Comp);
+        if (ArabicaConfig.FriendsSet.Contains((ent.Comp?.PlayerSession.Name ?? GetUsername(ent)) ?? string.Empty))
+            return true;
+        return false;
+    }
+
+    private string? GetUsername(EntityUid uid)
+    {
+        var netEntity = GetNetEntity(uid);
+        return _adminSystem.PlayerList.FirstOrDefault(player => player.NetEntity == netEntity)?.Username;
     }
 }

@@ -1,4 +1,3 @@
-using Content.Client.Administration.Systems;
 using Content.Shared.Administration;
 using Robust.Client.Player;
 using Robust.Shared.Console;

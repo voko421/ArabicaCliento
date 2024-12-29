@@ -17,6 +17,7 @@ public class ArabicaAimSystem : EntitySystem
     [Dependency] private readonly IEyeManager _eyeManager = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly ArabicaFriendSystem _friend = default!;
     
     
     public static Vector2? CalculateInterceptPosition(Vector2 shooterPosition, float bulletSpeed, Vector2 targetPosition, Vector2 targetVelocity)
@@ -123,7 +124,7 @@ public class ArabicaAimSystem : EntitySystem
         if (!TryComp(ent, out MobStateComponent? state))
             return false;
         if (state.CurrentState != MobState.Alive) return false;
-        if (HasComp<ArabicaFriendComponent>(ent)) return false;
+        if (_friend.IsFriend(ent.Owner)) return false;
         return true;
     }
 }
