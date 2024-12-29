@@ -41,7 +41,7 @@ If you want to build the cheat for development purposes, start by downloading it
 - **Anti-Slip** – Protection from slipping on soap and other slippery surfaces.
 - **Auto-Spin** – "Spinbot" effect, causing the character to spin continuously.
 - **Auto-Zoom** – Automatically adjusts zoom for optimal view.
-- **Friend-or-Foe System (Arabica Friend)** – Aimbot recognizes friends and enemies, focusing only on opponents.
+- **Friend-or-Foe System (Arabica Friend)** – Aimbot recognizes friends and enemies, focusing only on opponents. Add your friend by username.
 - **ClickGui** - simple user interface for switching cheat functions, activated by F4.
 
 ## Additional Features
@@ -52,6 +52,7 @@ If you want to build the cheat for development purposes, start by downloading it
 - **Security Icons** – Icons for simplified interaction with security systems.
 - **Command Permissions Patch** – Patch for working with command privileges.
 - **Syndicate detector** - When a character has an uplink in PDA or a regular uplink (nukeops's uplinks), it displays the syndicate icon
+- **FOV Toggler** - Toggle FOV using a button
 
 ## Contributions
 I welcome any contributions to the cheat client. If you have ideas for improvements or new features, please write in the Issues section on GitHub.
