@@ -12,6 +12,12 @@ public class ArabicaUnfriendCommand : IConsoleCommand
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
+        if (args.Length != 1)
+        {
+            shell.WriteError("Invalid args count");
+            return;
+        }
+        
         if (ArabicaConfig.FriendsSet.Remove(args[0]))
             shell.WriteLine("Username is successfully removed");
         else
