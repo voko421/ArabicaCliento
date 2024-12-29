@@ -15,6 +15,8 @@ public static class ArabicaConfig
     public static float RangedAimbotRadius = 2f;
 
     public static bool SyndicateDetector = true;
+    
+    public static bool FOVDisable = true;
 
     public static HashSet<string> FriendsSet = [];
 

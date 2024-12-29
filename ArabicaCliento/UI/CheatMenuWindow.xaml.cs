@@ -20,16 +20,18 @@ public sealed partial class CheatMenuWindow : ArabicaWindow
         TitleLabel.Text = "ArabicaCliento: Click GUI";
         Ranged.Pressed = ArabicaConfig.RangedAimbotEnabled;
         Melee.Pressed = ArabicaConfig.MeleeAimbotEnabled;
-        Autospin.Pressed = ArabicaConfig.SpinBotEnabled;
-        Antislip.Pressed = ArabicaConfig.AntiSlipEnabled;
+        AutoSpin.Pressed = ArabicaConfig.SpinBotEnabled;
+        AntiSlip.Pressed = ArabicaConfig.AntiSlipEnabled;
+        SyndicateDetector.Pressed = ArabicaConfig.SyndicateDetector;
+        DOD.Pressed = ArabicaConfig.FOVDisable;
         //LogPlayers.Pressed = ArabicaConfig.LogPlayers;
 
-        SyndicateDetector.Pressed = ArabicaConfig.SyndicateDetector;
         Melee.OnToggled += args => ArabicaConfig.MeleeAimbotEnabled = args.Pressed;
         Ranged.OnToggled += args => ArabicaConfig.RangedAimbotEnabled = args.Pressed;
-        Autospin.OnToggled += args => ArabicaConfig.SpinBotEnabled = args.Pressed;
-        Antislip.OnToggled += args => ArabicaConfig.AntiSlipEnabled = args.Pressed;
+        AutoSpin.OnToggled += args => ArabicaConfig.SpinBotEnabled = args.Pressed;
+        AntiSlip.OnToggled += args => ArabicaConfig.AntiSlipEnabled = args.Pressed;
         SyndicateDetector.OnToggled += args => ArabicaConfig.SyndicateDetector = args.Pressed;
+        DOD.OnToggled += args => ArabicaConfig.FOVDisable = args.Pressed;
         Discord.OnPressed += _ => _arabicaDiscord?.OpenDiscord();
         //LogPlayers.OnToggled += args => ArabicaConfig.LogPlayers = args.Pressed;
     }

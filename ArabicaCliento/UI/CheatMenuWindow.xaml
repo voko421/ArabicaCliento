@@ -4,11 +4,12 @@
                        SetSize="600 400">
     <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" VerticalExpand="True" VerticalAlignment="Center"
                   SeparationOverride="5">
-        <Button ToggleMode="True" Text="Ranged aimbot" StyleClasses="ButtonSquare" Name="Ranged" />
-        <Button ToggleMode="True" Text="Melee aimbot" StyleClasses="ButtonSquare" Name="Melee" />
-        <Button ToggleMode="True" Text="Autospin" StyleClasses="ButtonSquare" Name="Autospin" />
-        <Button ToggleMode="True" Text="AntiSlip" StyleClasses="ButtonSquare" Name="Antislip" />
-        <Button ToggleMode="True" Text="Syndicate detector" StyleClasses="ButtonSquare" Name="SyndicateDetector" />
+        <Button ToggleMode="True" Text="Ranged Aimbot" StyleClasses="ButtonSquare" Name="Ranged" />
+        <Button ToggleMode="True" Text="Melee Aimbot" StyleClasses="ButtonSquare" Name="Melee" />
+        <Button ToggleMode="True" Text="AutoSpin" StyleClasses="ButtonSquare" Name="AutoSpin" />
+        <Button ToggleMode="True" Text="AntiSlip" StyleClasses="ButtonSquare" Name="AntiSlip" />
+        <Button ToggleMode="True" Text="Syndicate Detector" StyleClasses="ButtonSquare" Name="SyndicateDetector" />
+        <Button ToggleMode="True" Text="Fov Disabler" StyleClasses="ButtonSquare" Name="DOD" />
         <!-- <Button ToggleMode="True" Text="Log players" StyleClasses="ButtonSquare" Name="LogPlayers" /> -->
         <Button Text="OPEN DISCORD" StyleClasses="ButtonColorRed" Name="Discord" />
     </BoxContainer>
