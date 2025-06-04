@@ -1,5 +1,6 @@
 # ArabicaCliento
 The first fully open-source cheat for SS14.
+Thanks for [MyNameUndefined](https://github.com/mynameundefined) for Zazaika Mod(what was this cheat based on).
 
 [Discord server](https://discord.gg/QrgHRM2p37)
 
