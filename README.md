@@ -13,7 +13,7 @@ To run this, you need [MarseyLoader](https://github.com/ValidHunters/Marseyloade
 ## Installation
 1. Install the latest version of [MarseyLoader for your operating system](https://github.com/ValidHunters/Marseyloader/releases).
 2. Go to the [ArabicaCliento release page](https://github.com/noverd/ArabicaCliento/releases).
-3. Download the latest version of ArabicaCliento.
+3. Download the latest version of ArabicaCliento (.dll).
 4. Place the file in the `Marsey/Mods` folder in the MarseyLoader directory.
 5. Launch MarseyLoader, go to the *Plugins* section, and activate ArabicaCliento.
 6. Enjoy!
