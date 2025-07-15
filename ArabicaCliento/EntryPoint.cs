@@ -21,7 +21,5 @@ public sealed class EntryPoint : GameShared
         };
         _inputManager.RegisterBinding(registration, false);
         MarseyLogger.Debug("Setup context.");
-        
-        
     }
 }

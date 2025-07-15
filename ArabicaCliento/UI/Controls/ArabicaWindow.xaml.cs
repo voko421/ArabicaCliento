@@ -16,6 +16,7 @@ public partial class ArabicaWindow : BaseWindow
     {
         RobustXamlLoader.Load(this);
         CloseButton.OnPressed += CloseButtonPressed;
+        XamlChildren = ContentsContainer.Children;
     }
 
     private void CloseButtonPressed(BaseButton.ButtonEventArgs buttonEventArgs)
