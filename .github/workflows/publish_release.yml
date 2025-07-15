@@ -18,7 +18,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '9.0.x'
 
       - run: dotnet restore
         
@@ -41,7 +41,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./ArabicaCliento/bin/Debug/net8.0/ArabicaCliento.dll
+          asset_path: ./ArabicaCliento/bin/Debug/net9.0/ArabicaCliento.dll
           asset_name: ArabicaCliento.dll
           asset_content_type: application/vnd.microsoft.portable-executable
 
