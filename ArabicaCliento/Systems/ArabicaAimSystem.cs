@@ -18,44 +18,6 @@ public class ArabicaAimSystem : EntitySystem
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly ArabicaFriendSystem _friend = default!;
-    
-    
-    public static Vector2? CalculateInterceptPosition(Vector2 shooterPosition, float bulletSpeed, Vector2 targetPosition, Vector2 targetVelocity)
-    {
-        // Вектор от стрелка до цели
-        var toTarget = targetPosition - shooterPosition;
-
-        // Решение квадратичного уравнения в 2D
-        var a = Vector2.Dot(targetVelocity, targetVelocity) - bulletSpeed * bulletSpeed;
-        var b = 2 * Vector2.Dot(toTarget, targetVelocity);
-        var c = Vector2.Dot(toTarget, toTarget);
-
-        // Решаем уравнение at^2 + bt + c = 0
-        var discriminant = b * b - 4 * a * c;
-
-        if (discriminant < 0)
-        {
-            // Нет реального решения, пересечения не будет
-            return null; // Возвращаем текущую позицию цели как fallback
-        }
-
-        // Ищем два возможных времени пересечения
-        var sqrtDiscriminant = (float)Math.Sqrt(discriminant);
-        var t1 = (-b - sqrtDiscriminant) / (2 * a);
-        var t2 = (-b + sqrtDiscriminant) / (2 * a);
-
-        // Выбираем минимальное положительное время
-        var interceptTime = Math.Max(0, Math.Min(t1, t2));
-
-        // Если оба t отрицательны, значит цель ушла или слишком быстрая
-        if (interceptTime < 0)
-        {
-            return null; // Возвращаем текущую позицию цели как fallback
-        }
-
-        // Позиция пересечения
-        return targetPosition + targetVelocity * interceptTime;
-    }
 
     public AimOutput? GetClosestToEntInRange(
         EntityUid ent,
