@@ -17,6 +17,9 @@ public static class ArabicaConfig
     public static bool SyndicateDetector = true;
     
     public static bool FOVDisable = true;
+    
+    public static bool OverlaysDisable = true;
+
 
     public static HashSet<string> FriendsSet = [];
 

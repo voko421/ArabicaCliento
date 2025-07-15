@@ -15,6 +15,7 @@ internal static class OverlaysPatch
     {
         yield return AccessTools.Method(typeof(FlashOverlay), "Draw");
         yield return AccessTools.Method(typeof(BlindOverlay), "Draw");
+        yield return AccessTools.Method(typeof(BlurryVisionOverlay), "Draw");
         yield return AccessTools.Method(typeof(DrunkOverlay), "Draw");
         yield return AccessTools.Method(typeof(RainbowOverlay), "Draw");
     }
@@ -22,6 +23,6 @@ internal static class OverlaysPatch
     [HarmonyPrefix]
     private static bool Prefix()
     {
-        return false;
+        return !ArabicaConfig.OverlaysDisable;
     }
 }
