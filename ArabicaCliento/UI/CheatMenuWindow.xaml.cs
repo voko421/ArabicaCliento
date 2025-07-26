@@ -25,6 +25,7 @@ public sealed partial class CheatMenuWindow : ArabicaWindow
         SyndicateDetector.Pressed = ArabicaConfig.SyndicateDetector;
         DOD.Pressed = ArabicaConfig.FOVDisable;
         OverlaysDisable.Pressed = ArabicaConfig.OverlaysDisable;
+        AdmOverlays.Pressed = ArabicaConfig.OverlayEnabled;
         //LogPlayers.Pressed = ArabicaConfig.LogPlayers;
 
         Melee.OnToggled += args => ArabicaConfig.MeleeAimbotEnabled = args.Pressed;
@@ -34,6 +35,7 @@ public sealed partial class CheatMenuWindow : ArabicaWindow
         SyndicateDetector.OnToggled += args => ArabicaConfig.SyndicateDetector = args.Pressed;
         DOD.OnToggled += args => ArabicaConfig.FOVDisable = args.Pressed;
         OverlaysDisable.OnToggled += args => ArabicaConfig.OverlaysDisable = args.Pressed;
+        AdmOverlays.OnToggled += args => ArabicaConfig.OverlayEnabled = args.Pressed;
 
         
         Discord.OnPressed += _ => _arabicaDiscord?.OpenDiscord();

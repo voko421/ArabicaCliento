@@ -20,6 +20,7 @@ public static class ArabicaConfig
     
     public static bool OverlaysDisable = true;
 
+    public static bool OverlayEnabled = false;
 
     public static HashSet<string> FriendsSet = [];
 

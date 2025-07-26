@@ -11,6 +11,7 @@
         <Button ToggleMode="True" Text="Syndicate Detector" StyleClasses="ButtonSquare" Name="SyndicateDetector" />
         <Button ToggleMode="True" Text="Fov Disabler" StyleClasses="ButtonSquare" Name="DOD" />
         <Button ToggleMode="True" Text="Overlays Disabler" StyleClasses="ButtonSquare" Name="OverlaysDisable" />
+        <Button ToggleMode="True" Text="Admin Overlays" StyleClasses="ButtonSquare" Name="AdmOverlays" />
         <!-- <Button ToggleMode="True" Text="Log players" StyleClasses="ButtonSquare" Name="LogPlayers" /> -->
         <Button Text="OPEN DISCORD" StyleClasses="ButtonColorRed" Name="Discord" />
     </BoxContainer>
