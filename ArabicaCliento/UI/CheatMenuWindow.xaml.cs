@@ -9,14 +9,11 @@ namespace ArabicaCliento.UI;
 public sealed partial class CheatMenuWindow : ArabicaWindow
 {
     [Dependency] private readonly IEntityManager _entMan = default!;
-    
-    private readonly ArabicaDiscordSystem? _arabicaDiscord;
 
     public CheatMenuWindow()
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
-        _arabicaDiscord ??= _entMan.System<ArabicaDiscordSystem>();
         TitleLabel.Text = "ArabicaCliento: Click GUI";
         Ranged.Pressed = ArabicaConfig.RangedAimbotEnabled;
         Melee.Pressed = ArabicaConfig.MeleeAimbotEnabled;
@@ -25,7 +22,7 @@ public sealed partial class CheatMenuWindow : ArabicaWindow
         SyndicateDetector.Pressed = ArabicaConfig.SyndicateDetector;
         DOD.Pressed = ArabicaConfig.FOVDisable;
         OverlaysDisable.Pressed = ArabicaConfig.OverlaysDisable;
-        AdmOverlays.Pressed = ArabicaConfig.OverlayEnabled;
+        AdmOverlays.Pressed = ArabicaConfig.OverlaysDisable;
         //LogPlayers.Pressed = ArabicaConfig.LogPlayers;
 
         Melee.OnToggled += args => ArabicaConfig.MeleeAimbotEnabled = args.Pressed;
@@ -37,8 +34,7 @@ public sealed partial class CheatMenuWindow : ArabicaWindow
         OverlaysDisable.OnToggled += args => ArabicaConfig.OverlaysDisable = args.Pressed;
         AdmOverlays.OnToggled += args => ArabicaConfig.OverlayEnabled = args.Pressed;
 
-        
-        Discord.OnPressed += _ => _arabicaDiscord?.OpenDiscord();
+
         //LogPlayers.OnToggled += args => ArabicaConfig.LogPlayers = args.Pressed;
     }
 }
